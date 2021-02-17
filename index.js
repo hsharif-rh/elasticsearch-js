@@ -24,13 +24,16 @@ const nodeMajor = Number(process.versions.node.split('.')[0])
 const { EventEmitter } = require('events')
 const { URL } = require('url')
 const debug = require('debug')('elasticsearch')
-const Transport = require('./lib/Transport')
-const Connection = require('./lib/Connection')
-const { ConnectionPool, CloudConnectionPool } = require('./lib/pool')
+const {
+  Transport,
+  Connection,
+  ConnectionPool,
+  CloudConnectionPool,
+  errors,
+  Serializer
+} = require('@elastic/transport')
 // Helpers works only in Node.js >= 10
 const Helpers = nodeMajor < 10 ? /* istanbul ignore next */ null : require('./lib/Helpers')
-const Serializer = require('./lib/Serializer')
-const errors = require('./lib/errors')
 const { ConfigurationError } = errors
 const { prepareHeaders } = Connection.internals
 let clientVersion = require('./package.json').version

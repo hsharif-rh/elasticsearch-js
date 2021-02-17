@@ -18,7 +18,7 @@
  */
 
 import { Readable as ReadableStream } from 'stream'
-import { TransportRequestOptions, ApiError, ApiResponse, RequestBody, Context } from './Transport'
+import { TransportRequestOptions, ApiError, ApiResponse, RequestBody, Context } from '@elastic/transport/lib/Transport'
 import { Search, Msearch, Bulk } from '../api/requestParams'
 
 export default class Helpers {

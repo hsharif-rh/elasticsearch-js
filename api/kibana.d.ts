@@ -38,7 +38,7 @@ import {
   TransportRequestOptions,
   TransportRequestPromise,
   Context
-} from '../lib/Transport'
+} from '@elastic/transport/lib/Transport'
 import * as RequestParams from './requestParams'
 
 // Extend API

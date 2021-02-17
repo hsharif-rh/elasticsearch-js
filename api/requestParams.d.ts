@@ -17,7 +17,7 @@
  * under the License.
  */
 
-import { RequestBody, RequestNDBody } from '../lib/Transport'
+import { RequestBody, RequestNDBody } from '@elastic/transport/lib/Transport'
 
 export interface Generic {
   method?: string;

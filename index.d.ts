@@ -34,9 +34,9 @@ import Transport, {
   RequestBody,
   RequestNDBody,
   Context
-} from './lib/Transport';
+} from '@elastic/transport/lib/Transport';
 import { URL } from 'url';
-import Connection, { AgentOptions, agentFn } from './lib/Connection';
+import Connection, { AgentOptions, agentFn } from '@elastic/transport/lib/Connection';
 import {
   ConnectionPool,
   BaseConnectionPool,
@@ -44,11 +44,11 @@ import {
   ResurrectEvent,
   BasicAuth,
   ApiKeyAuth
-} from './lib/pool';
-import Serializer from './lib/Serializer';
+} from '@elastic/transport/lib/pool';
+import Serializer from '@elastic/transport/lib/Serializer';
 import Helpers from './lib/Helpers';
 import * as RequestParams from './api/requestParams';
-import * as errors from './lib/errors';
+import * as errors from '@elastic/transport/lib/errors';
 
 declare type callbackFn<TResponse, TContext> = (err: ApiError, result: ApiResponse<TResponse, TContext>) => void;
 
