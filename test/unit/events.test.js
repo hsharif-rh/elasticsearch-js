@@ -21,8 +21,8 @@
 
 const { test } = require('tap')
 const semver = require('semver')
-const { Client, events } = require('../../index')
-const { TimeoutError } = require('../../lib/errors')
+const { Client, events, errors } = require('../../index')
+const { TimeoutError } = errors
 const {
   connection: {
     MockConnection,

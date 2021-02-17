@@ -19,7 +19,7 @@
 
 import { URL } from 'url'
 import { expectType, expectError } from 'tsd'
-import { TransportGetConnectionOptions } from '../../lib/Transport'
+import { TransportGetConnectionOptions } from '@elastic/transport/lib/Transport'
 import {
   Client,
   Serializer,

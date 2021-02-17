@@ -27,7 +27,7 @@ import {
   OnDropDocument,
   MsearchHelper
 } from '../../lib/Helpers'
-import { ApiResponse, ApiError, Context } from '../../lib/Transport'
+import { ApiResponse, ApiError, Context } from '@elastic/transport'
 
 const client = new Client({
   node: 'http://localhost:9200'

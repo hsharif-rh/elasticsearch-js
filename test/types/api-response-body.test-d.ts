@@ -19,7 +19,7 @@
 
 import { expectType, expectError } from 'tsd'
 import { Readable as ReadableStream } from 'stream';
-import { TransportRequestCallback, Context } from '../../lib/Transport'
+import { TransportRequestCallback, Context } from '@elastic/transport'
 import { Client, ApiError } from '../../'
 
 const client = new Client({

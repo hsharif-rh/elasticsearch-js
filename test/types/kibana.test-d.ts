@@ -20,7 +20,7 @@
 import { expectType, expectNotType, expectError } from 'tsd'
 import { Client, RequestEvent, ResurrectEvent, ApiError, ApiResponse } from '../../'
 import { KibanaClient } from '../../api/kibana'
-import { TransportRequestPromise, Context } from '../../lib/Transport'
+import { TransportRequestPromise, Context } from '@elastic/transport'
 
 const client: KibanaClient = new Client({
   node: 'http://localhost:9200'

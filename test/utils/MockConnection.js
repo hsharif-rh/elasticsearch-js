@@ -20,12 +20,12 @@
 'use strict'
 
 const assert = require('assert')
-const { Connection } = require('../../index')
+const { Connection, errors } = require('../../index')
 const {
   ConnectionError,
   RequestAbortedError,
   TimeoutError
-} = require('../../lib/errors')
+} = errors
 const intoStream = require('into-stream')
 
 class MockConnection extends Connection {

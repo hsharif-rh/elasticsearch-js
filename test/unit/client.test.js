@@ -23,8 +23,14 @@ const { test } = require('tap')
 const { URL } = require('url')
 const buffer = require('buffer')
 const intoStream = require('into-stream')
-const { Client, ConnectionPool, Transport, Connection, errors } = require('../../index')
-const { CloudConnectionPool } = require('../../lib/pool')
+const {
+  Client,
+  ConnectionPool,
+  Transport,
+  Connection,
+  errors
+} = require('../../index')
+const { CloudConnectionPool } = require('@elastic/transport')
 const { buildServer } = require('../utils')
 let clientVersion = require('../../package.json').version
 if (clientVersion.includes('-')) {

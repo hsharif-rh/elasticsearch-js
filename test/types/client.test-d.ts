@@ -19,7 +19,7 @@
 
 import { expectType } from 'tsd'
 import { Client, ApiError, ApiResponse, RequestEvent, ResurrectEvent } from '../../'
-import { TransportRequestCallback, TransportRequestPromise } from '../../lib/Transport'
+import { TransportRequestCallback, TransportRequestPromise } from '@elastic/transport'
 
 const client = new Client({
   node: 'http://localhost:9200'
