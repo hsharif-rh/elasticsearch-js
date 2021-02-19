@@ -25,13 +25,13 @@ const { EventEmitter } = require('events')
 const { URL } = require('url')
 const debug = require('debug')('elasticsearch')
 const {
-  Transport,
   Connection,
-  ConnectionPool,
+  ClusterConnectionPool,
   CloudConnectionPool,
   errors,
   Serializer
 } = require('@elastic/transport')
+const SniffingTransport = require('./lib/SniffingTransport')
 const Helpers = require('./lib/Helpers')
 const { ConfigurationError } = errors
 const { prepareHeaders } = Connection.internals
@@ -102,9 +102,9 @@ class Client extends ESAPI {
       ? opts[kChild].initialOptions
       : Object.assign({}, {
         Connection,
-        Transport,
+        Transport: SniffingTransport,
         Serializer,
-        ConnectionPool: opts.cloud ? CloudConnectionPool : ConnectionPool,
+        ConnectionPool: opts.cloud ? CloudConnectionPool : ClusterConnectionPool,
         maxRetries: 3,
         requestTimeout: 30000,
         pingTimeout: 3000,
@@ -329,8 +329,8 @@ const events = {
 
 module.exports = {
   Client,
-  Transport,
-  ConnectionPool,
+  Transport: SniffingTransport,
+  ConnectionPool: ClusterConnectionPool,
   Connection,
   Serializer,
   events,

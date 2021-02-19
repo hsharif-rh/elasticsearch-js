@@ -24,8 +24,8 @@ import {
   Client,
   Serializer,
   Connection,
-  ConnectionPool,
-  Transport,
+  ClusterConnectionPool,
+  SniffingTransport,
   errors
 } from '../../'
 
@@ -611,7 +611,7 @@ expectError<errors.ConfigurationError>(
  * `ConnectionPool` option
  */
 {
-  class CustomConnectionPool extends ConnectionPool {
+  class CustomConnectionPool extends ClusterConnectionPool {
     empty () {
       return super.empty()
     }
@@ -645,7 +645,7 @@ expectError<errors.ConfigurationError>(
  * `Transport` option
  */
 {
-  class CustomTransport extends Transport {
+  class CustomTransport extends SniffingTransport {
     getConnection (opts: TransportGetConnectionOptions) {
       return super.getConnection(opts)
     }

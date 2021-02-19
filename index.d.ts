@@ -20,7 +20,7 @@
 /// <reference types="node" />
 
 import { ConnectionOptions as TlsConnectionOptions } from 'tls';
-import Transport, {
+import {
   ApiError,
   ApiResponse,
   RequestEvent,
@@ -38,13 +38,14 @@ import Transport, {
 import { URL } from 'url';
 import Connection, { AgentOptions, agentFn } from '@elastic/transport/lib/Connection';
 import {
-  ConnectionPool,
+  ClusterConnectionPool,
   BaseConnectionPool,
   CloudConnectionPool,
   ResurrectEvent,
   BasicAuth,
   ApiKeyAuth
 } from '@elastic/transport/lib/pool';
+import SniffingTransport from './lib/SniffingTransport'
 import Serializer from '@elastic/transport/lib/Serializer';
 import Helpers from './lib/Helpers';
 import * as RequestParams from './api/requestParams';
@@ -84,8 +85,8 @@ interface ClientOptions {
   node?: string | string[] | NodeOptions | NodeOptions[];
   nodes?: string | string[] | NodeOptions | NodeOptions[];
   Connection?: typeof Connection;
-  ConnectionPool?: typeof ConnectionPool;
-  Transport?: typeof Transport;
+  ConnectionPool?: typeof ClusterConnectionPool;
+  Transport?: typeof SniffingTransport;
   Serializer?: typeof Serializer;
   maxRetries?: number;
   requestTimeout?: number;
@@ -119,8 +120,8 @@ interface ClientOptions {
 
 declare class Client {
   constructor(opts?: ClientOptions);
-  connectionPool: ConnectionPool;
-  transport: Transport;
+  connectionPool: ClusterConnectionPool;
+  transport: SniffingTransport;
   serializer: Serializer;
   extend(method: string, fn: extendsCallback): void
   extend(method: string, opts: { force: boolean }, fn: extendsCallback): void;
@@ -2654,8 +2655,8 @@ declare const events: {
 
 export {
   Client,
-  Transport,
-  ConnectionPool,
+  SniffingTransport,
+  ClusterConnectionPool,
   BaseConnectionPool,
   CloudConnectionPool,
   Connection,

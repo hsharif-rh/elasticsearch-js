@@ -21,9 +21,9 @@
 
 import {
   ClientOptions,
-  ConnectionPool,
+  ClusterConnectionPool,
   Serializer,
-  Transport,
+  SniffingTransport,
   errors,
   RequestEvent,
   ResurrectEvent,
@@ -56,8 +56,8 @@ declare type extendsCallback = (options: ClientExtendsCallbackOptions) => any;
 // /Extend API
 
 interface KibanaClient {
-  connectionPool: ConnectionPool
-  transport: Transport
+  connectionPool: ClusterConnectionPool
+  transport: SniffingTransport
   serializer: Serializer
   extend(method: string, fn: extendsCallback): void
   extend(method: string, opts: { force: boolean }, fn: extendsCallback): void;
