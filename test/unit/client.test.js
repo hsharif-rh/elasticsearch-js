@@ -293,7 +293,7 @@ test('Authentication', t => {
     t.test('Custom basic authentication per request', t => {
       t.plan(6)
 
-      var first = true
+      let first = true
       function handler (req, res) {
         t.match(req.headers, {
           authorization: first ? 'hello' : 'Basic Zm9vOmJhcg=='
@@ -328,7 +328,7 @@ test('Authentication', t => {
     t.test('Override default basic authentication per request', t => {
       t.plan(6)
 
-      var first = true
+      let first = true
       function handler (req, res) {
         t.match(req.headers, {
           authorization: first ? 'hello' : 'Basic Zm9vOmJhcg=='
@@ -425,7 +425,7 @@ test('Authentication', t => {
     t.test('Custom ApiKey authentication per request', t => {
       t.plan(6)
 
-      var first = true
+      let first = true
       function handler (req, res) {
         t.match(req.headers, {
           authorization: first ? 'ApiKey Zm9vOmJhcg==' : 'Basic Zm9vOmJhcg=='
@@ -460,7 +460,7 @@ test('Authentication', t => {
     t.test('Override default ApiKey authentication per request', t => {
       t.plan(6)
 
-      var first = true
+      let first = true
       function handler (req, res) {
         t.match(req.headers, {
           authorization: first ? 'hello' : 'ApiKey Zm9vOmJhcg=='
@@ -1097,8 +1097,8 @@ test('Correctly handles the same header cased differently', t => {
   t.plan(4)
 
   function handler (req, res) {
-    t.strictEqual(req.headers['authorization'], 'Basic foobar')
-    t.strictEqual(req.headers['foo'], 'baz')
+    t.strictEqual(req.headers.authorization, 'Basic foobar')
+    t.strictEqual(req.headers.foo, 'baz')
     res.setHeader('Content-Type', 'application/json;utf=8')
     res.end(JSON.stringify({ hello: 'world' }))
   }
